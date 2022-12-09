@@ -65,6 +65,7 @@ def simulate(channel:Channel, n:int, p:float):
             if x_prime[i] != x[i]:  
                 symbol_error_count += 1
         ser += (symbol_error_count/len(x_prime))
+		
 
         ## calculate wer
         if symbol_error_count/len(x_prime) > 0:
@@ -89,7 +90,7 @@ def main():
 	num_simulations = [10, 100, 1000, 10000, 100000]
 	output = []
 	for i in num_simulations:
-		wer, ser = simulate(channel = c, n = i, p = 0.01)
+		wer, ser = simulate(channel = c, n = i, p = 0.3)
 		output.append([i, wer, ser])
 	print(tabulate(output, headers= ['Simulation', 'Wer', 'Ser'], tablefmt="pretty", numalign='center'))
 	
